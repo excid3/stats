@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+records_per_day = 62_500
+
+0.upto(15) do |i|
+  records_per_day.times do |count|
+    puts "Day #{i} - #{count}" if count % 1000 == 0
+
+    hit = Hit.create(
+      url: URLS.sample,
+      referrer: REFERRERS.sample,
+      created_at: i.days.ago
+    )
+
+    hit.update hash: Digest::MD5.hexdigest(hit.values.except(:hash).to_s)
+  end
+end
