@@ -1,5 +1,5 @@
-@top_urls.each do |date, records|
-  top_urls_for_day = records.sort_by{ |r| r.values.count }.take(10)
+(@start_date..@end_date).each do |date|
+  top_urls_for_day = @top_urls.fetch(date, []).sort_by{ |r| r.values.count }.take(10)
 
   json.set! date do
     json.array! top_urls_for_day do |record|
