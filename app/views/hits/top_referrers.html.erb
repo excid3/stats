@@ -1,16 +1,27 @@
 <h1>Top Referrers</h1>
 
-<a href="#/hits">Home</a>
-<a href="#/top/urls">Top URLs</a>
+<%= render partial: "shared/nav" %>
+
+<br />
+<p class="text-muted">Your end-users should be able to retrieve the top 5 referrers for the top 10 URLs grouped by day, for the past 5 days, via a REST endpoint.</p>
+<p class="text-muted">Direct API access: <%= link_to "/top_referrers.json", "/top_referrers.json" %></p>
 
 <div ng-repeat="(date, records) in top_referrers">
   <h3>{{ date }}</h3>
   <ul>
     <li ng-repeat="record in records">
-      {{ record.url }} - Visits: {{ record.visits }}
+      {{ record.url || 'NULL' }} - Visits: {{ record.visits }}
+      <p><strong>Referrers</strong></p>
+      <ul>
+        <li ng-repeat="referrer in record.referrers">
+          {{ referrer.url || 'NULL' }} - Visits: {{ referrer.visits }}
+        </li>
+      </ul>
+      <hr />
     </li>
 
     <li ng-show="!records.length">No visits for this day</li>
   </ul>
+  <hr />
 </div>
 

@@ -1,7 +1,10 @@
 <h1>Top URLs</h1>
 
-<a href="#/hits">Home</a>
-<a href="#/top/referrers">Top Referrers</a>
+<%= render partial: "shared/nav" %>
+
+<br />
+<p class="text-muted">The end-user should be able to access a REST endpoint in your application in order to retrieve the number of page views per URL, grouped by day, for the past 5 days.</p>
+<p class="text-muted">Direct API access: <%= link_to "/top_urls.json", "/top_urls.json" %></p>
 
 <div ng-repeat="(date, records) in top_urls">
   <h3>{{ date }}</h3>

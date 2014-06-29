@@ -1,5 +1,45 @@
 <h1>Stats</h1>
 
-<a href="#/top/urls">Top URLs</a>
-<a href="#/top/referrers">Top Referrers</a>
+<%= render partial: "shared/nav" %>
 
+<br />
+
+<h2>Engineering Exercise</h2>
+<p>By Chris Oliver</p>
+<ul>
+  <li>Using Rails 4, Bootstrap 3.2, and Angular 1.3.0-beta.13</li>
+  <li>Sequel gem for database queries</li>
+  <li>Rspec for tests</li>
+</ul>
+
+<h3>Setup</h3>
+<pre><code>
+  bundle
+
+  # Optionally modify database.yml to match your local MySQL server
+  rake db:create && rake db:migrate
+
+</code></pre>
+
+<h3>Running tests</h3>
+<pre><code>
+  rake db:test:prepare
+  rake
+
+</code></pre>
+
+<h3>Loading Development Data</h3>
+<pre><code>
+  # Generates 16 consecutive days worth of results with 62,500 hits a day
+  # Sets up 1 million records in the database
+  rake db:seed
+
+</code></pre>
+
+<h3>Discussion Notes</h3>
+<p>Top Referrers query is pretty inefficient. I'm sure it can be improved by using a subquery of sorts, but I'm not sure the most efficient way to approach this yet so I opted for N+1 query which isn't great.</p>
+<p>Angular code is all in one file, as the app gets more complex, these certainly need to be split out and organized in the js folder.</p>
+<p>I'm sure specs can use a lot of improvement and narrowing down to be less fragile going forward.</p>
+<p>Sequel gems's documentation is lacking good advanced examples compared to ActiveRecord. Found the syntax interesting, but not rubyish in most cases.</p>
+<p>Casting created_at column to date skips indexing, causing queries to be fairly slow at 1M records. Saving a copy of just the date separately would allow for proper indexing and faster queries.</p>
+<p>Seeding db with 1M records is slow from creating records and updating them after they get an ID. This could be sped up by batching creates into transactions and then going back to update them after calculating hashes.</p>
