@@ -14,3 +14,8 @@ gem 'spring',        group: :development
 # New gems
 gem 'sequel', '~> 4.11.0'
 
+group :development do
+  # Don't include version numbers on these gems because we always want the latest versions
+  gem "better_errors"
+  gem "binding_of_caller"
+end
