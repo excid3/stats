@@ -6,6 +6,10 @@
 <p class="text-muted">The end-user should be able to access a REST endpoint in your application in order to retrieve the number of page views per URL, grouped by day, for the past 5 days.</p>
 <p class="text-muted">Direct API access: <%= link_to "/top_urls.json", "/top_urls.json" %></p>
 
+<div ng-show="isEmpty(top_urls)">
+  <p class="text-muted"><i class="fa fa-spinner fa-spin"></i> Loading...</p>
+</div>
+
 <div ng-repeat="(date, records) in top_urls">
   <h3>{{ date }}</h3>
   <ul>
@@ -16,4 +20,5 @@
     <li ng-show="!records.length">No visits for this day</li>
   </ul>
 </div>
+
 

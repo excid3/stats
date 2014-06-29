@@ -6,6 +6,10 @@
 <p class="text-muted">Your end-users should be able to retrieve the top 5 referrers for the top 10 URLs grouped by day, for the past 5 days, via a REST endpoint.</p>
 <p class="text-muted">Direct API access: <%= link_to "/top_referrers.json", "/top_referrers.json" %></p>
 
+<div ng-show="isEmpty(top_referrers)">
+  <p class="text-muted"><i class="fa fa-spinner fa-spin"></i> Loading...</p>
+</div>
+
 <div ng-repeat="(date, records) in top_referrers">
   <h3>{{ date }}</h3>
   <ul>

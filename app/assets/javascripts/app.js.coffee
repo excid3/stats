@@ -30,6 +30,9 @@ app.controller "URLsController", ($scope, $route, $http) ->
 
   $scope.loadTopURLs()
 
+  $scope.isEmpty = (obj) ->
+    angular.equals({},obj)
+
 app.controller "ReferrersController", ($scope, $route, $http) ->
   $scope.$route = $route
   $scope.url = "/top_referrers.json"
@@ -40,3 +43,6 @@ app.controller "ReferrersController", ($scope, $route, $http) ->
       $scope.top_referrers = response.data
 
   $scope.loadTopReferrers()
+
+  $scope.isEmpty = (obj) ->
+    angular.equals({},obj)

@@ -16,6 +16,7 @@ gem 'sequel', '~> 4.11.0'
 gem 'sequel-rails', '~> 0.9.3'
 gem 'angularjs-rails', '~> 1.2.18'
 gem 'bootstrap-sass', '~> 3.2.0.0'
+gem 'font-awesome-rails', '~> 4.1.0.0'
 
 group :development do
   # Don't include version numbers on these gems because we always want the latest versions
