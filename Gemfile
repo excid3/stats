@@ -14,6 +14,7 @@ gem 'spring',        group: :development
 # New gems
 gem 'sequel', '~> 4.11.0'
 gem 'sequel-rails', '~> 0.9.3'
+gem 'angularjs-rails', '~> 1.2.18'
 
 group :development do
   # Don't include version numbers on these gems because we always want the latest versions

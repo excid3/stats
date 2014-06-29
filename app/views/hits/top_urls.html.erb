@@ -1,0 +1,16 @@
+<h1>Top URLs</h1>
+
+<a href="#/hits">Home</a>
+<a href="#/top/referrers">Top Referrers</a>
+
+<div ng-repeat="(date, records) in top_urls">
+  <h3>{{ date }}</h3>
+  <ul>
+    <li ng-repeat="record in records">
+      {{ record.url }} - Visits: {{ record.visits }}
+    </li>
+
+    <li ng-show="!records.length">No visits for this day</li>
+  </ul>
+</div>
+
